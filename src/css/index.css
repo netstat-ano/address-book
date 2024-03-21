@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.dataTable {
+  @apply tw-mt-4 tw-w-[400px] !tw-bg-primary tw-p-4;
+  * > th {
+    @apply tw-font-bold !important;
+  }
+}

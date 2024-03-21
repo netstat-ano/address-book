@@ -2,7 +2,6 @@ let id = 1;
 let addresses = [];
 addEventListener("message", (event) => {
   const { data: request } = event;
-  console.log(request.data);
   switch (request.type) {
     case "create_address":
       request.data.id = id;

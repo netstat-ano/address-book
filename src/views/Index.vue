@@ -1,27 +1,21 @@
 <template>
-  <v-dialog v-model="isConfirmDeleteModalVisible" width="auto">
-    <v-card max-width="400" color="primary">
-      <template v-slot:title> Address deletion </template>
+  <Modal
+    :isVisible="isConfirmDeleteModalVisible"
+    @update:modelValue="isConfirmDeleteModalVisible = false"
+    title="Address deletion"
+  >
+    <v-card-text> Are you sure you want to delete this address? </v-card-text>
 
-      <template v-slot:text>
-        Are you sure you want to delete this address?
-      </template>
-
-      <template v-slot:actions>
-        <v-btn
-          variant="elevated"
-          color="primary_dark"
-          text="Confirm"
-          @click="onDeleteAddress"
-        ></v-btn>
-        <v-btn
-          variant="outlined"
-          text="Cancel"
-          @click="onRejectDeletion"
-        ></v-btn>
-      </template>
-    </v-card>
-  </v-dialog>
+    <template v-slot:actions>
+      <v-btn
+        variant="elevated"
+        color="primary_dark"
+        text="Confirm"
+        @click="onDeleteAddress"
+      ></v-btn>
+      <v-btn variant="outlined" text="Cancel" @click="onRejectDeletion"></v-btn>
+    </template>
+  </Modal>
 
   <v-snackbar color="success" :timeout="1500" v-model="isSnackbarVisible">
     {{ snackbarText }}
@@ -37,7 +31,9 @@
   >
   </AddressCreatorModal>
 
-  <div class="tw-bg-primary tw-w-[800px] tw-p-4 tw-m-4 tw-rounded">
+  <div
+    class="tw-bg-primary tw-w-[250px] sm:tw-w-[400px] lg:tw-w-[800px] tw-p-4 tw-m-4 tw-rounded"
+  >
     <div class="tw-mt-4">
       <v-btn
         color="primary_dark"
@@ -67,6 +63,7 @@ import { Icon } from "@/enums/Icon";
 import type { Address, AddressResponse } from "@/types/Address";
 import { reactive, ref, onMounted } from "vue";
 import { Events } from "@/enums/Events";
+import Modal from "@/components/UI/Modal.vue";
 import { request } from "@/helpers/request";
 
 const addresses = ref<AddressResponse[]>();

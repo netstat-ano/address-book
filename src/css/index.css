@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html {
+  overflow-y: auto !important;
+}
 .dataTable {
   @apply tw-mt-4 tw-w-[400px] !tw-bg-primary tw-p-4;
   * > th {

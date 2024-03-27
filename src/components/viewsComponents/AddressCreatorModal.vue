@@ -1,6 +1,5 @@
 <template>
   <Modal
-    color="primary"
     :isVisible="isVisible"
     @update:modelValue="emit('onClose')"
     title="Add address"
